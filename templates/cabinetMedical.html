@@ -4,10 +4,10 @@
     </div>
 </md-toolbar>
 <md-content class="mainContent">
-    <md-button class="md-primary md-fab addPatientBtn" ng-click= "$ctrl.displayForm($event)" aria-label="Ajouter un patient">
+    <md-button class="md-primary md-fab addPatientBtn" ng-click="$ctrl.displayForm($event)" aria-label="Ajouter un patient">
         <i class="material-icons">add</i>
     </md-button>
-    
+
     <div class="infirmiers md-whiteframe-1dp">
         <md-toolbar>
             <div class="md-toolbar-tools">
@@ -28,5 +28,5 @@
         <md-list flex ng-drop="true" ng-drop-success="console.log('yes')">
             <patient ng-repeat="pat in $ctrl.data.patientsRestant" data="pat" cabinet="$ctrl" ng-drag="true"></patient>
         </md-list>
-    </div> 
+    </div>
 </md-content>
