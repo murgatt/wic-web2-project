@@ -1,0 +1,43 @@
+.selectInf {
+    display: inline-block;
+}
+
+infirmier patient .selectInf {
+    width: 180px;
+}
+
+patient md-input-container {
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+.infosPatient {
+    padding-top: 4px;
+    padding-left: 8px;
+}
+
+.addPatientDialog {
+    min-width: 500px;
+}
+
+.addPatientDialog md-datepicker {
+    padding: 2px;
+    margin: 13px 0;
+    margin-right: 12px;
+}
+
+.addPatientDialog md-datepicker .md-datepicker-input-container {
+    width: 150px;
+}
+
+.patientBtn {
+    position: absolute;
+    right: 30px;
+    top: 5%;
+}
+
+.patientBtn i {
+    display: block;
+    cursor: pointer;
+    margin-bottom: 4px;
+}

@@ -1,0 +1,125 @@
+<md-dialog aria-label="Ajouter un patient" class="addPatientDialog">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Ajouter un patient</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <i class="material-icons">close</i>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content style="max-width:800px;max-height:810px; ">
+            <form id="formAddPatient" name="formAddPatient">
+                <md-tabs md-dynamic-height md-border-bottom md-selected="selectedIndex">
+                   
+                    <md-tab label="Informations générales">
+                        <md-content class="md-padding" layout="column" ng-cloak class="md-inline-form">
+                            <md-input-container class="patientName md-block">
+                                <label for="patientName">Nom</label>
+                                <input name="patientName" type="text" name="patientName" id="patientName" required ng-model="newPatient.patientName"/>
+                                <div ng-messages="formAddPatient.patientName.$error" role="alert" multiple>
+                                    <div ng-message="required">
+                                        Veuillez entrer le nom du patient
+                                    </div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="patientForname md-block">
+                                <label for="patientForname">Prénom</label>
+                                <input type="text" name="patientForname" id="patientForname" required ng-model="newPatient.patientForname"/>
+                                <div ng-messages="formAddPatient.patientForname.$error" role="alert" multiple>
+                                    <div ng-message="required">
+                                        Veuillez entrer le prénom du patient
+                                    </div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="patientNumber md-block">
+                                <label for="patientNumber">Numéro de sécurité sociale</label>
+                                <input type="text" name="patientNumber" id="patientNumber" required ng-model="newPatient.patientNumber" ng-pattern="/^[0-9]{15}$/" md-minlength="15" md-maxlength="15"/>
+                                <div ng-messages="formAddPatient.patientNumber.$error" role="alert" multiple>
+                                    <div ng-message="required">
+                                        Veuillez entrer le numéro de sécurité sociale du patient
+                                    </div>
+                                    <div ng-message="pattern md-minlength md-maxlength">
+                                        Le numéro de sécurité sociale doit être composé de 15 chiffres
+                                    </div>
+                                </div>
+                            </md-input-container>
+                            <div layout-gt-sm="row">
+                                <md-datepicker class="patientBirthday" md-placeholder="Date de naissance" required ng-model="newPatient.patientBirthday">Date de naissance
+                                </md-datepicker>
+                                <md-input-container class="patientSex">
+                                    <label for="patientSex">Sexe</label>
+                                    <md-select name="patientSex" required ng-model="newPatient.patientSex">
+                                        <md-option value="M">M</md-option>
+                                        <md-option value="F">F</md-option>
+                                    </md-select>
+                                    <div ng-messages="formAddPatient.patientSex.$error" role="alert" multiple>
+                                        <div ng-message="required">
+                                            Veuillez sélectionner le sexe du patient
+                                        </div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                        </md-content>
+                    </md-tab>
+                    
+                    <md-tab label="Adresse">
+                        <md-content class="md-padding" layout="column" ng-cloak class="md-inline-form">
+                            <div layout-gt-sm="row">
+                                <md-input-container class="patientFloor md-block">
+                                  <label for="patientFloor">Etage</label>
+                                  <input name="patientFloor" ng-model="newPatient.patientFloor" ng-pattern="/^[0-9]*$/">
+                                    <div ng-messages="formAddPatient.patientFloor.$error" role="alert" multiple>
+                                      <div ng-message="pattern">L'étage doit être un numéro</div>
+                                  </div>
+                              </md-input-container>
+                                <md-input-container class="numberStreet md-block">
+                                  <label for="numberStreet">Numéro</label>
+                                    <input name="numberStreet" ng-model="newPatient.numberStreet"  ng-pattern="/^[0-9]*\s*(bis)?$/">
+                                    <div ng-messages="formAddPatient.numberStreet.$error" role="alert" multiple>
+                                      <div ng-message="pattern">Ce numéro de rue n'est pas valide</div>
+                                  </div>
+                              </md-input-container>
+                          </div>
+                            <md-input-container class="patientStreet md-block">
+                               <label for="patientStreet">Rue</label>
+                                <input type="text" name="patientStreet" id="patientStreet" required ng-model="newPatient.patientStreet"/>
+                                <div ng-messages="formAddPatient.patientStreet.$error" role="alert" multiple>
+                                    <div ng-message="required">
+                                        Veuillez entrer un nom de rue
+                                    </div>
+                                </div>
+                           </md-input-container>
+                            <md-input-container class="patientPostalCode md-block">
+                               <label for="patientPostalCode">Code Postal</label>
+                               <input name="patientPostalCode" ng-model="newPatient.patientPostalCode" placeholder="12345"
+                                      required ng-pattern="/^[0-9]{5}$/" md-maxlength="5" md-minlength="5">
+                                <div ng-messages="formAddPatient.patientPostalCode.$error" role="alert" multiple>
+                                    <div ng-message="required">
+                                        Veuillez entrer le code postal du patient
+                                    </div>
+                                    <div ng-message="md-maxlength md-minlength pattern">
+                                       Le code postal doit être nombre à cinq chiffres
+                                   </div>
+                               </div>
+                           </md-input-container>
+                            <md-input-container class="patientCity md-block">
+                               <label for="patientCity">Ville : </label>
+                                <input type="text" name="patientCity" id="patientCity" required ng-model="newPatient.patientCity"/>
+                                <div ng-messages="formAddPatient.patientCity.$error" role="alert" multiple>
+                                    <div ng-message="required">
+                                        Veuillez entrer la ville du patient
+                                    </div>
+                                </div>
+                           </md-input-container>
+                        </md-content>
+                    </md-tab>
+                    
+                </md-tabs>
+            </form>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button class="md-raised" ng-click="nextTab()">{{button}}</md-button>
+            <md-button type="submit" class="md-raised md-primary" ng-click="addPatient()" ng-disabled="formAddPatient.$invalid">Ajouter</md-button>
+        </md-dialog-actions>
+</md-dialog>

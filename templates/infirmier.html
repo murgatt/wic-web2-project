@@ -1,0 +1,19 @@
+<md-card md-theme="default" md-theme-watch="" class="_md md-default-theme">
+    <md-card-title>
+        <md-card-title-media>
+            <div class="md-media-sm card-media">
+                <img class="md-avatar" ng-src='{{$ctrl.data.photo}}' />
+            </div>
+        </md-card-title-media>
+        <md-card-title-text>
+            <span class="md-headline">{{$ctrl.data.nom}} {{$ctrl.data.prenom}}</span>
+            <span class="md-subhead"></span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-content>
+        <md-subheader class="md-no-sticky">Patients :</md-subheader>
+        <md-list flex ng-drop="true" ng-drop-success="console.log('yes')">
+            <patient ng-repeat="pat in $ctrl.data.patients" data="pat" cabinet="$ctrl.cabinet" ng-drag="true"></patient>
+        </md-list>
+    </md-content>
+</md-card>

@@ -1,0 +1,32 @@
+<md-toolbar class="md-whiteframe-2dp headerToolbar">
+    <div class="md-toolbar-tools">
+        <h1>Interface secrétaire <i class="material-icons">navigate_next</i> {{$ctrl.titre}}</h1>
+    </div>
+</md-toolbar>
+<md-content class="mainContent">
+    <md-button class="md-primary md-fab addPatientBtn" ng-click= "$ctrl.displayForm($event)" aria-label="Ajouter un patient">
+        <i class="material-icons">add</i>
+    </md-button>
+    
+    <div class="infirmiers md-whiteframe-1dp">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h3>Infirmiers</h3>
+            </div>
+        </md-toolbar>
+        <md-content flex class="md-padding" layout-xs="column" layout="row">
+            <infirmier flex-xs flex-gt-xs="50" layout="column" ng-repeat="inf in $ctrl.data.infirmiers" data="inf" cabinet="$ctrl"></infirmier>
+        </md-content>
+    </div>
+
+    <div class="patients md-whiteframe-1dp">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <span>Patients non affectés</span>
+            </div>
+        </md-toolbar>
+        <md-list flex ng-drop="true" ng-drop-success="console.log('yes')">
+            <patient ng-repeat="pat in $ctrl.data.patientsRestant" data="pat" cabinet="$ctrl" ng-drag="true"></patient>
+        </md-list>
+    </div> 
+</md-content>

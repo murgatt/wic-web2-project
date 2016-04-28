@@ -1,0 +1,47 @@
+body {
+    background-color: #fafafa;
+}
+
+.headerToolbar {
+    background: #f6f6f6 !important;
+    color: #202020 !important;
+    margin-bottom: 24px;
+}
+
+.headerToolbar div.md-toolbar-tools h1 {
+    font-size: 24px;
+}
+
+.headerToolbar div.md-toolbar-tools h1 .material-icons {
+    vertical-align: middle;
+}
+
+.mainContent {
+    margin-top: 48px;
+    background-color: #fafafa;
+}
+
+.addPatientBtn {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+}
+
+.addPatientBtn .material-icons {
+    height: 56px;
+    line-height: 56px;
+}
+
+md-toolbar {
+    border-radius: 3px 3px 0 0;
+}
+
+.md-whiteframe-1dp {
+    width: 960px;
+    margin: 0 auto;
+    margin-bottom: 24px;
+}
+
+md-card-title-text {
+    margin-left: 12px;
+}

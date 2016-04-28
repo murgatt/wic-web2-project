@@ -1,0 +1,33 @@
+<md-divider ></md-divider>
+<md-list-item class="md-3-line">
+    <div class="md-list-item-text" layout="column">
+       <div class="infosPatient">
+           <h3>{{$ctrl.data.nom}} {{$ctrl.data.prenom}}</h3>
+           <h4>{{$ctrl.data.numero}}</h4>
+           <h4><b>Sexe :</b> {{$ctrl.data.sexe}}</h4>
+           <h4><b>Né le :</b> {{$ctrl.data.naissance}}</h4>
+           <p> 
+               <span ng-if="$ctrl.data.adresse.etage">Etage {{$ctrl.data.adresse.etage}} <br/></span>
+               {{$ctrl.data.adresse.numero}} {{$ctrl.data.adresse.rue}} <br/>
+               {{$ctrl.data.adresse.codePostal}} {{$ctrl.data.adresse.ville}}
+           </p>
+       </div>
+        <form name="affecterPatient">
+            <md-input-container class="infirmiers">
+                <md-select aria-label="infirmier" name="infirmier" ng-model="$ctrl.affecterPatient.infirmier" class="selectInf" required>
+                    <md-option selected ng-value="null" value="null" class="nullValue">Affecter à un infirmier</md-option>
+                    <md-option ng-if="inf.id" ng-repeat="inf in $ctrl.cabinet.data.infirmiers" ng-value="inf.id">{{inf.nom}} {{inf.prenom}}</md-option>
+                    <md-option ng-value="0" >Aucun infirmier</md-option>
+                </md-select>
+                <md-button type="submit" ng-disabled="affecterPatient.$invalid" ng-click="$ctrl.affecterPatient()" md-no-ink class="md-primary">Ok</md-button>
+            </md-input-container>
+        </form>
+    </div>
+    <md-button class="md-secondary md-icon-button" ng-click="$ctrl.locatePatient()" aria-label="locate">
+        <i class="material-icons">location_on</i>
+    </md-button>
+    <div class="patientBtn">
+        <i class="material-icons setBtn">settings</i>
+        <i class="material-icons deleteBtn">delete</i>
+    </div>
+</md-list-item>
