@@ -32,18 +32,6 @@
                                 </div>
                             </div>
                         </md-input-container>
-                        <md-input-container class="patientNumber md-block">
-                            <label for="patientNumber">Numéro de sécurité sociale</label>
-                            <input type="text" name="patientNumber" id="patientNumber" required ng-model="newPatient.patientNumber" ng-pattern="/^[0-9]{15}$/" md-minlength="15" md-maxlength="15" />
-                            <div ng-messages="formAddPatient.patientNumber.$error" role="alert" multiple>
-                                <div ng-message="required">
-                                    Veuillez entrer le numéro de sécurité sociale du patient
-                                </div>
-                                <div ng-message="pattern md-minlength md-maxlength">
-                                    Le numéro de sécurité sociale doit être composé de 15 chiffres
-                                </div>
-                            </div>
-                        </md-input-container>
                         <div layout-gt-sm="row">
                             <md-datepicker class="patientBirthday" md-placeholder="Date de naissance" required ng-model="newPatient.patientBirthday">Date de naissance
                             </md-datepicker>
@@ -119,6 +107,6 @@
     </md-dialog-content>
     <md-dialog-actions layout="row">
         <md-button class="md-raised" ng-click="nextTab()">{{button}}</md-button>
-        <md-button type="submit" class="md-raised md-primary" ng-click="addPatient()" ng-disabled="formAddPatient.$invalid">Ajouter</md-button>
+        <md-button type="submit" class="md-raised md-primary" ng-click="alterPatient()" ng-disabled="formAddPatient.$invalid">Modifier</md-button>
     </md-dialog-actions>
 </md-dialog>

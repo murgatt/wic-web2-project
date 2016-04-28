@@ -209,7 +209,6 @@ function init(port, applicationServerIP, applicationServerPort) {
 						var codePostal = doc.createElement('codePostal');
 						codePostal.appendChild( doc.createTextNode(req.body.patientPostalCode) );
 						adresse.appendChild( codePostal );
-						
 				 console.log( xmlSerializer.serializeToString(newPatient) );
 				 saveXML(doc, res);
 				}
@@ -243,6 +242,25 @@ function init(port, applicationServerIP, applicationServerPort) {
 		  }
 	      }
 	    );
+    
+    // Define HTTP ressource POST /deletePatient, remove a patient from datas
+    app.post( '/deletePatient', function(req, res) {
+        if(typeof req.body.patient === 'undefined' ) {
+            res.writeHead(500);
+            res.end("You should specify 'patient' with her social security number in your request.");
+        } else {
+            var patient = req.body.patient;
+            var xmlPatients = doc.getElementsByTagName('patient');
+            for(var i = 0; i < xmlPatients.length; i++) {
+                var patientNum = xmlPatients[i].getElementsByTagName('numero')[0].textContent;
+                if(patientNum === patient) {
+                    xmlPatients[i].removeChild(xmlPatients[i]);
+                    saveXML(doc, res);
+                    break;
+                }
+            }
+        }
+    });
 
     // Define HTTP ressource POST /INFIRMIERE
    app.post( '/INFIRMIERE'

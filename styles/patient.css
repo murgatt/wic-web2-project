@@ -41,3 +41,7 @@ patient md-input-container {
     cursor: pointer;
     margin-bottom: 4px;
 }
+
+.patients md-list {
+    padding-top: 0;
+}
